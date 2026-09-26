@@ -69,6 +69,9 @@ namespace algoim
         T* ptr;
         int len;
 
+        // C++20: a user-declared (even deleted) constructor makes this a non-aggregate, so
+        // xarraySlice<T>{ptr, len} needs an explicit constructor. Identical under C++17.
+        xarraySlice(T* p, int n) : ptr(p), len(n) {}
         xarraySlice(xarraySlice&) = delete;
         xarraySlice(xarraySlice&&) = delete;
 
